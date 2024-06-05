@@ -1,7 +1,7 @@
 # Ejercicio N6 Simulación
 
-# Authors
-Buil Delfina
+## Authors
+Buil Delfina,
 Buzzacchi Victoria
 
 ## Create virtual environment
