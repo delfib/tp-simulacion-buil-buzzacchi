@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 MAX_TIME = 100
 MIN_HEIGHT = 0.00001
 MIN_VELOCITY = 0.0001
@@ -46,3 +48,36 @@ def get_acceleration(t):
 
 
 run()
+
+
+# Extract date to plot
+times = list(height_values.keys())
+heights = list(height_values.values())
+velocities = list(velocity_values.values())
+
+# Create subplots
+plt.figure(figsize=(12, 6))
+
+# Plot Height
+plt.subplot(2, 1, 1)
+plt.plot(times, heights, label='Height (m)', color='b')
+plt.axhline(MIN_HEIGHT, color='r', linestyle='--', label='Min Height')
+plt.xlabel('Time')
+plt.ylabel('Height (m)')
+plt.title('Height')
+plt.legend()
+plt.grid(True)
+
+# Plot Velocity
+plt.subplot(2, 1, 2)
+plt.plot(times, velocities, label='Velocity (m/s)', color='g')
+plt.xlabel('Time (s)')
+plt.ylabel('Velocity (m/s)')
+plt.title('Velocity')
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+
+# Save the plot on a file
+plt.savefig('simulation_plot.png')
