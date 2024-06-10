@@ -9,6 +9,11 @@ class EulerMethod:
         self.h = h
         self.height_values = height_values
         self.velocity_values = velocity_values
+    
+    """ def __init__(self, h, initial_height, initial_velocity):
+        self.h = h
+        self.height_values = {0: initial_height}
+        self.velocity_values = {0: initial_velocity} """
 
     def compute_next_height(self, t):
         result = self.height_values[t] + self.h * self.velocity_values[t]
