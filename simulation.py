@@ -7,7 +7,7 @@ class Simulation:
     def __init__(self, method, initial_height, initial_velocity, h):
         self.time = 0
         self.h = h
-        self.method = method(h, {self.time: initial_height}, {self.time: initial_velocity})
+        self.method = method(h, initial_height, initial_velocity)
 
     def run(self):
         while self.time <= MAX_TIME:

@@ -1,19 +1,14 @@
 class EulerMethod:
-    ba = 0.1    
+    ba = 0.1   
     m = 1
     b = 30
     g = 9.8
     k = 100000
-
-    def __init__(self, h, height_values, velocity_values):
-        self.h = h
-        self.height_values = height_values
-        self.velocity_values = velocity_values
     
-    """ def __init__(self, h, initial_height, initial_velocity):
+    def __init__(self, h, initial_height, initial_velocity):
         self.h = h
         self.height_values = {0: initial_height}
-        self.velocity_values = {0: initial_velocity} """
+        self.velocity_values = {0: initial_velocity}
 
     def compute_next_height(self, t):
         result = self.height_values[t] + self.h * self.velocity_values[t]
