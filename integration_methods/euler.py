@@ -5,23 +5,19 @@ class EulerMethod:
     g = 9.8
     k = 100000
     
-    def __init__(self, h, initial_height, initial_velocity):
+    def __init__(self, h):
         self.h = h
-        self.height_values = {0: initial_height}
-        self.velocity_values = {0: initial_velocity}
 
-    def compute_next_height(self, t):
-        result = self.height_values[t] + self.h * self.velocity_values[t]
-        self.height_values[t + self.h] = result
+    def compute_next_height(self, prev_height, prev_velocity):
+        result = prev_height + self.h * prev_velocity
         return result
 
-    def compute_next_velocity(self, t):
-        result = self.velocity_values[t] + self.h * self.get_acceleration(t)
-        self.velocity_values[t + self.h] = result
+    def compute_next_velocity(self, prev_height, prev_velocity):
+        result = prev_velocity + self.h * self.get_acceleration(prev_height, prev_velocity)
         return result
 
-    def get_acceleration(self, t):
-        if self.height_values[t] > 0: 
-            return -self.ba / self.m * self.velocity_values[t] - self.g
+    def get_acceleration(self, prev_height, prev_velocity):
+        if prev_height > 0: 
+            return -self.ba / self.m * prev_velocity - self.g
         else:
-            return -self.k / self.m * self.height_values[t] - self.b / self.m * self.velocity_values[t] - self.g
+            return -self.k / self.m * prev_height - self.b / self.m * prev_velocity - self.g

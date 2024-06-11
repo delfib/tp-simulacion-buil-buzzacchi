@@ -11,11 +11,10 @@ def main():
     h = 0.0001
 
     euler_simulation = Simulation(EulerMethod, initial_height, initial_velocity, h)
-    #trapezoidal_simulation = Simulation(TrapezoidalMethod, initial_height, initial_velocity, h)
+    trapezoidal_simulation = Simulation(TrapezoidalMethod, initial_height, initial_velocity, h)
 
     euler_height_values, euler_velocity_values = euler_simulation.run()
-    
-    #trapezoidal_height_values, trapezoidal_velocity_values = trapezoidal_simulation.run()
+    trapezoidal_height_values, trapezoidal_velocity_values = trapezoidal_simulation.run()
 
     # Extract data for plotting
 
@@ -23,12 +22,13 @@ def main():
     heights_euler = list(euler_height_values.values())
     velocities_euler = list(euler_velocity_values.values())
 
-    """ times_trapezoidal = list(trapezoidal_height_values.keys())
+    times_trapezoidal = list(trapezoidal_height_values.keys())
     heights_trapezoidal = list(trapezoidal_height_values.values())
-    velocities_trapezoidal = list(trapezoidal_velocity_values.values()) """
+    velocities_trapezoidal = list(trapezoidal_velocity_values.values())
 
     # Plot the results
-    plot_results(times_euler, heights_euler, velocities_euler)
+    plot_results(times_euler, heights_euler, velocities_euler, times_trapezoidal, heights_trapezoidal, velocities_trapezoidal)
+    #plot_results(times_trapezoidal, heights_trapezoidal, velocities_trapezoidal)
 
     # Calculate differents values
     """ time_points = sorted(list(set(euler_height_values.keys()) & set(trapezoidal_height_values.keys())))
