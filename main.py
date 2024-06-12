@@ -4,14 +4,24 @@ from integration_methods.heun import HeunMethod
 from integration_methods.trapezoidal import TrapezoidalMethod
 from plotter import plot_results
 from simulation import Simulation
+from configparser import ConfigParser
 
 def main():
-    initial_height = 10
-    initial_velocity = 0
-    h = 0.0001
 
-    euler_simulation = Simulation(EulerMethod, initial_height, initial_velocity, h)
-    trapezoidal_simulation = Simulation(TrapezoidalMethod, initial_height, initial_velocity, h)
+    config = ConfigParser()
+    config.read('config.ini')
+
+    initial_height = config.getfloat('simulation', 'initial_height')
+    initial_velocity = config.getfloat('simulation', 'initial_velocity')
+    h = config.getfloat('simulation', 'h')
+    ba = config.getfloat('params', 'ba')
+    m = config.getfloat('params', 'm')
+    b = config.getfloat('params', 'b')
+    g = config.getfloat('params', 'g')
+    k = config.getfloat('params', 'k')
+
+    euler_simulation = Simulation(EulerMethod, initial_height, initial_velocity, h, ba, m , b, g, k)
+    trapezoidal_simulation = Simulation(TrapezoidalMethod, initial_height, initial_velocity, h, ba, m , b, g, k)
 
     euler_height_values, euler_velocity_values = euler_simulation.run()
     trapezoidal_height_values, trapezoidal_velocity_values = trapezoidal_simulation.run()

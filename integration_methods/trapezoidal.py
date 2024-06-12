@@ -1,11 +1,6 @@
 from integration_methods.euler import EulerMethod
 
 class TrapezoidalMethod:
-    ba = 0.1    
-    m = 1
-    b = 30
-    g = 9.8
-    k = 100000
 
     """ def __init__(self, h, initial_height, initial_velocity):
         self.h = h
@@ -17,23 +12,23 @@ class TrapezoidalMethod:
         self.h = h
         self.euler_method = EulerMethod(h) 
 
-    def compute_next_height(self, prev_height, prev_velocity):
-        result = prev_height + 0.5 * self.h * (prev_velocity + self.euler_method.compute_next_velocity(prev_height, prev_velocity))
+    def compute_next_height(self, prev_height, prev_velocity, ba, m , b, g, k):
+        result = prev_height + 0.5 * self.h * (prev_velocity + self.euler_method.compute_next_velocity(prev_height, prev_velocity, ba, m , b, g, k))
         return result
     
     # return height_values_trapezoidal[t] + 0.5 * H * (velocity_values_trapezoidal[t] +  velocity_values_euler[t + H])
 
-    def compute_next_velocity(self, prev_height, prev_velocity):
-        result = prev_velocity + 0.5 * self.h * (self.get_acceleration(prev_height, prev_velocity) + self.euler_method.get_acceleration(prev_height, prev_velocity))
+    def compute_next_velocity(self, prev_height, prev_velocity, ba, m , b, g, k):
+        result = prev_velocity + 0.5 * self.h * (self.get_acceleration(prev_height, prev_velocity, ba, m , b, g, k) + self.euler_method.get_acceleration(prev_height, prev_velocity, ba, m , b, g, k))
         return result
     
     # return velocity_values_trapezoidal[t] + 0.5 * H * (get_acceleration(t) + get_acceleration(t + H))
 
-    def get_acceleration(self, prev_height, prev_velocity):
+    def get_acceleration(self, prev_height, prev_velocity, ba, m , b, g, k):
         if prev_height > 0: 
-            return -self.ba / self.m * prev_velocity - self.g
+            return -ba / m * prev_velocity - g
         else:
-            return -self.k / self.m * prev_height - self.b / self.m * prev_velocity - self.g
+            return -k / m * prev_height - b / m * prev_velocity - g
 
 
 

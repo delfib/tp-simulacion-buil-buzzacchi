@@ -32,3 +32,27 @@ To execute the project, run the command:
 ```
 python3 ball.py
 ```
+
+
+## Configuration of Parameters
+
+The simulation parameters are located in the `config.ini` file. To modify the parameters, edit this file with the desired values.
+
+### Structure of the `config.ini` File
+
+The `config.ini` file is divided into sections. Below is an example of its structure:
+
+```ini
+[simulation]
+initial_height = 10
+initial_velocity = 0
+h = 0.0001
+
+[params]
+ba = 0.1
+m = 1
+b = 30
+g = 9.8
+k = 100000
+```
+
