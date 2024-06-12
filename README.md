@@ -30,9 +30,8 @@ pip install -r requirements.txt
 ## Execute the program
 To execute the project, run the command:
 ```
-python3 ball.py
+python3 main.py
 ```
-
 
 ## Configuration of Parameters
 
