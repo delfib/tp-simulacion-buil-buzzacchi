@@ -56,3 +56,5 @@ g = 9.8
 k = 100000
 ```
 
+## Visualization with Matplotlib
+The **matplotlib** library is used to create graphs, which will be visualized in the file `simulation_plot.png`.
